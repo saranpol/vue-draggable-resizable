@@ -195,60 +195,61 @@ export default {
       this.resizing = true
     },
     maximize: function (e) {
-      if (!this.parent || !this.resizable) return
-
-      let done = false
-
-      const animate = () => {
-        if (!done) {
-          window.requestAnimationFrame(animate)
-        }
-
-        if (this.axis === 'x') {
-          if (
-            this.width === this.parentW && this.left === this.parentX
-          ) done = true
-        } else if (this.axis === 'y') {
-          if (
-            this.height === this.parentH && this.top === this.parentY
-          ) done = true
-        } else if (this.axis === 'both') {
-          if (
-            this.width === this.parentW &&
-            this.height === this.parentH &&
-            this.top === this.parentY &&
-            this.left === this.parentX
-          ) done = true
-        }
-
-        if (this.axis === 'x' || this.axis === 'both') {
-          if (this.width < this.parentW) {
-            this.width++
-            this.elmW++
-          }
-
-          if (this.left > this.parentX) {
-            this.left--
-            this.elmX--
-          }
-        }
-
-        if (this.axis === 'y' || this.axis === 'both') {
-          if (this.height < this.parentH) {
-            this.height++
-            this.elmH++
-          }
-
-          if (this.top > this.parentY) {
-            this.top--
-            this.elmY--
-          }
-        }
-
-        this.$emit('resizing', this.left, this.top, this.width, this.height)
-      }
-
-      window.requestAnimationFrame(animate)
+        this.$emit('doubleclick')
+    //   if (!this.parent || !this.resizable) return
+      //
+    //   let done = false
+      //
+    //   const animate = () => {
+    //     if (!done) {
+    //       window.requestAnimationFrame(animate)
+    //     }
+      //
+    //     if (this.axis === 'x') {
+    //       if (
+    //         this.width === this.parentW && this.left === this.parentX
+    //       ) done = true
+    //     } else if (this.axis === 'y') {
+    //       if (
+    //         this.height === this.parentH && this.top === this.parentY
+    //       ) done = true
+    //     } else if (this.axis === 'both') {
+    //       if (
+    //         this.width === this.parentW &&
+    //         this.height === this.parentH &&
+    //         this.top === this.parentY &&
+    //         this.left === this.parentX
+    //       ) done = true
+    //     }
+      //
+    //     if (this.axis === 'x' || this.axis === 'both') {
+    //       if (this.width < this.parentW) {
+    //         this.width++
+    //         this.elmW++
+    //       }
+      //
+    //       if (this.left > this.parentX) {
+    //         this.left--
+    //         this.elmX--
+    //       }
+    //     }
+      //
+    //     if (this.axis === 'y' || this.axis === 'both') {
+    //       if (this.height < this.parentH) {
+    //         this.height++
+    //         this.elmH++
+    //       }
+      //
+    //       if (this.top > this.parentY) {
+    //         this.top--
+    //         this.elmY--
+    //       }
+    //     }
+      //
+    //     this.$emit('resizing', this.left, this.top, this.width, this.height)
+    //   }
+      //
+    //   window.requestAnimationFrame(animate)
     },
     handleMove: function (e) {
       if (e.preventDefault) e.preventDefault()
